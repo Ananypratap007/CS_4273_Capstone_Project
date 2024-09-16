@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Controller</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='/style.css') }}">   
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdn.lordicon.com/lordicon.js"></script>
+</head>
+
+<body style="background-image:url('{{ url_for('static', filename='images/background_img.jpg') }}'); background-size: cover;">
+    <nav class="navbar navbar-expand-lg" data-bs-theme="dark" style="background-color: #68A3B4;">
+        <div class="container-fluid">
+            <span class="navbar-brand mb-0 h1" id="date"></span>
+            <span class="navbar-brand" id="location" style="display: flex; justify-content: center; align-items: center;">
+                <lord-icon src="https://cdn.lordicon.com/surcxhka.json" trigger="hover" stroke="bold" colors="primary:#ffffff,secondary:#ffffff" class="d-inline-block align-text-top"></lord-icon>
+                <span>Norman, OK</span>
+            </span>
+            <span class="navbar-brand mb-0 h1">
+                <div>
+                    <span style="font-size:30px;cursor:pointer;color: #FDF4ED" onclick="openNav()">&#9776;</span>
+                </div>
+            </span>
+        </div>
+    </nav>
+    <div id="sidenav" class="sidenav" style="background-color: #68A3B4;">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="/" style=" color: #FDF4ED;">Home</a>
+        <a href="#" style=" color: #FDF4ED;">Contact Us</a>
+    </div>
+    <div id="main">
+        <div class="row">
+            <div class="text-center" id="location-title"><b>Outside</b></div>
+            <div class="row row-cols-4 row-cols-md-4 g-2">
+                <div class="col ">
+                    <div class="card bg-light" style="--bs-bg-opacity: .2;">
+                        <div class="card-body">
+                            <div>
+                                <img src="{{ url_for('static', filename='icons/temperature.svg') }}">
+                            </div>
+                            <h5 class="card-title">Temperature</h5>
+                            <div class="row">
+                                <div class="col"></div>
+                                <p class="card-text col" style="padding-left:0px" id="out-temp">{{ data.outside.temperature }}</p>
+                                <div class="col" style="display:flex; align-items: center; padding-left:0px"> 
+                                    <img src="{{ url_for('static', filename='icons/celcius.svg') }}">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card bg-light" style="--bs-bg-opacity: .2;">
+                        <div class="card-body">
+                            <div>
+                                <img src="{{ url_for('static', filename='icons/humidity.svg') }}">
+                            </div>
+                            <h5 class="card-title">Humidity</h5>
+                            <div class="row">
+                                <div class="col"></div>
+                                <p class="card-text col" style="padding-left:0px" id="out-humidity">{{ data.outside.humidity }}</p>
+                                <div class="col" style="display:flex; align-items: center; padding-left:0px"> 
+                                    <img src="{{ url_for('static', filename='icons/percent.svg') }}">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card bg-light" style="--bs-bg-opacity: .2;">
+                        <div class="card-body">
+                            <div>
+                                <img src="{{ url_for('static', filename='icons/sun.svg') }}">
+                            </div>
+                            <h5 class="card-title">Light</h5>
+                            <div class="row">
+                                <div class="col"></div>
+                                <p class="card-text col" style="padding-left:0px" id="out-light">45</p>
+                                <div class="col" style="display:flex; align-items: center; padding-left:0px"> 
+                                    <div style="font-size: 26px; font-weight: 350">lx</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card bg-light" style="--bs-bg-opacity: .2;">
+                        <div class="card-body">
+                            <div>
+                                <img src="{{ url_for('static', filename='icons/sound.svg') }}">
+                            </div>
+                            <h5 class="card-title">Sound</h5>
+                            <div class="row">
+                                <div class="col"></div>
+                                <p class="card-text col" style="padding-left:0px" id="out-sound">12</p>
+                                <div class="col" style="display:flex; align-items: center; padding-left:0px"> 
+                                    <div style="font-size: 26px; font-weight: 350">dB</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="text-center" id="location-title"><b>Inside</b></div>
+            <div class="row row-cols-4 row-cols-md-4 g-2">
+                <div class="col">
+                    <div class="card bg-light" style="--bs-bg-opacity: .2;">
+                        <div class="card-body">
+                            <div>
+                                <img src="{{ url_for('static', filename='icons/temperature.svg') }}">
+                            </div>
+                            <h5 class="card-title">Temperature</h5>
+                            <div class="row">
+                                <div class="col"></div>
+                                <p class="card-text col" style="padding-left:0px" id="in-temp">{{ data.inside.Temp }}</p>
+                                <div class="col" style="display:flex; align-items: center; padding-left:0px"> 
+                                    <img src="{{ url_for('static', filename='icons/celcius.svg') }}">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card bg-light" style="--bs-bg-opacity: .2;">
+                        <div class="card-body">
+                            <div>
+                                <img src="{{ url_for('static', filename='icons/humidity.svg') }}">
+                            </div>
+                            <h5 class="card-title">Humidity</h5>
+                            <div class="row">
+                                <div class="col"></div>
+                                <p class="card-text col" style="padding-left:0px" id="in-humidity">{{ data.inside.Humid }}</p>
+                                <div class="col" style="display:flex; align-items: center; padding-left:0px"> 
+                                    <img src="{{ url_for('static', filename='icons/percent.svg') }}">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card bg-light" style="--bs-bg-opacity: .2;">
+                        <div class="card-body">
+                            <div>
+                                <img src="{{ url_for('static', filename='icons/sun.svg') }}">
+                            </div>
+                            <h5 class="card-title">Light</h5>
+                            <div class="row">
+                                <div class="col"></div>
+                                <p class="card-text col" style="padding-left:0px" id="in-light">{{ data.inside.Lux }}</p>
+                                <div class="col" style="display:flex; align-items: center; padding-left:0px"> 
+                                    <div style="font-size: 26px; font-weight: 350">lx</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card bg-light" style="--bs-bg-opacity: .2;">
+                        <div class="card-body">
+                            <div>
+                                <img src="{{ url_for('static', filename='icons/sound.svg') }}">
+                            </div>
+                            <h5 class="card-title">Sound</h5>
+                            <div class="row">
+                                <div class="col"></div>
+                                <p class="card-text col" style="padding-left:0px" id="in-sound">{{ data.inside.dBl }}</p>
+                                <div class="col" style="display:flex; align-items: center; padding-left:0px"> 
+                                    <div style="font-size: 26px; font-weight: 350">dB</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="text-center" id="location-title"><b>Control</b> </div>
+            <div>
+                <div class="row m-2">
+                    <div class="range">
+                        <img style="padding-right: 5px;" src="{{ url_for('static', filename='icons/temperature2.svg') }}">
+                        <input type="range" min="0" max="100" value="0" id="range1" class="range-input" />
+                        <div class="value1" style="padding: 0px;">0</div>
+                        <img src="{{ url_for('static', filename='icons/celcius.svg') }}">
+                    </div>
+                </div>
+                <div class="row m-2">
+                    <div class="range">
+                        <img style="padding-right: 5px;" src="{{ url_for('static', filename='icons/humidity1.svg') }}">
+                        <input type="range" min="0" max="100" value="0" id="range2" class="range-input" />
+                        <div class="value2">0</div>
+                        <img src="{{ url_for('static', filename='icons/percent.svg') }}">
+                    </div>
+                </div>
+                <div class="row m-2">
+                    <div class="range">
+                        <img style="padding-right: 5px;" src="{{ url_for('static', filename='icons/sun1.svg') }}">
+                        <input type="range" min="0" max="100" value="0" id="range3" class="range-input" />
+                        <div style="m-0" class="value3">0</div>
+                        <div style="font-size: 26px; font-weight: 350">lx</div>
+                    </div>                  
+                </div>
+                <div style="display:flex; margin-left: 63px;">
+                    <button type="button" id="set-control" onclick="setControl()" class="btn" style="background-color:#68A3B4; width: 100px;color:white;">Set</button>               
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="text-center" id="location-title"><b>Progress</b> </div>
+            <div class="row m-3">
+                <span>
+                    <span class="progress" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width:100%; height: 30px;">
+                        <span class="progress-bar text-dark" style="width: 50%; background-color:#68A3B4; color:white;">50%</div>
+                    </span>  
+                </span>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function () {
+            var currentDate = new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+            $("#date").html(currentDate);
+
+            function updateData() {
+                var userTemp = $(".value1").text();
+                var userHumidity = $(".value2").text();
+                var insideTemp = $("#in-temp").text();
+                var insideHumid = $("#in-humidity").text();
+                var insideSound =  $("#in-sound").text();
+                var insideLight =  $("#in-light").text();
+                var user = {
+                    "temperature": userTemp,
+                    "humidity" : userHumidity
+                }
+                var inside = {
+                    "temperature": insideTemp,
+                    "humidity" : insideHumid,
+                    "light": insideLight,
+                    "sound": insideSound
+                }
+                var dataToSend = {
+                    "inside" : inside,
+                    "user": user
+                };
+
+                $.ajax({
+                    url: '/update_data',
+                    type: 'POST',
+                    dataType: 'json',
+                    data: JSON.stringify(dataToSend), // Convert object to JSON string
+                    contentType: 'application/json',
+                    success: function(data) {
+                        console.log(data);
+                        // Update the values
+                        $("#out-temp").html(data.outside.temperature);
+                        $("#out-humidity").html(data.outside.humidity);
+                        //$("#light").html(data.light);
+                        //$("#sound").html(data.sound);
+                        $("#in-temp").html(data.inside.temperature);
+                        $("#in-humidity").html(data.inside.humidity);
+                        $("#in-light").html(data.inside.light);
+                        $("#in-sound").html(data.inside.sound);
+                    },
+                    error: function(error) {
+                        console.log('Error fetching data:', error);
+                    }
+                });
+            }
+            // Call updateData function every 30 seconds
+            setInterval(updateData, 30000);
+        });
+
+        // Opening the side navigation
+        function openNav() {
+            $("#sidenav").css("width", "250px");
+            $("#main").css("marginRight", "250px");
+        }
+
+        // Closing the side navigation
+        function closeNav() {
+            $("#sidenav").css("width", "0");
+            $("#main").css("marginRight", "0");
+        }
+
+        function setControl() {
+            var temp = $(".value1").text();
+            var humidity = $(".value2").text();
+            var light = $(".value3").text();
+            // Create an object to hold the data to be sent to the backend
+            var dataToSend = {
+                "temperature": temp,
+                "humidity": humidity,
+                "light": light
+            };
+            $.ajax({
+                url: '/update_control',
+                type: 'POST',
+                dataType: 'json',
+                data: JSON.stringify(dataToSend), // Convert object to JSON string
+                contentType: 'application/json',
+                success: function(data) {
+                    console.log('Data sent successfully:', data);
+                },
+                error: function(error) {
+                    console.log('Error fetching data:', error);
+                }
+            });
+        }
+
+        //range slider 1 FOR TEMPERATURE 
+        const sliderEl = document.querySelector("#range1")
+        const sliderValue1 = document.querySelector(".value1")
+
+        sliderEl.addEventListener("input", (event) => {
+            const tempSliderValue = event.target.value;
+            sliderValue1.textContent = tempSliderValue;
+            const progress = (tempSliderValue / sliderEl.max) * 100;
+
+            sliderEl.style.background = `linear-gradient(to right, #68A3B4 ${progress}%, #ccc ${progress}%)`;
+        })
+
+         //range slider 2 FOR HUMIDITY
+        const sliderE2 = document.querySelector("#range2")
+        const sliderValue2 = document.querySelector(".value2")
+
+        sliderE2.addEventListener("input", (event) => {
+            const tempSliderValue = event.target.value;
+            sliderValue2.textContent = tempSliderValue;
+            const progress = (tempSliderValue / sliderE2.max) * 100;
+
+            sliderE2.style.background = `linear-gradient(to right, #68A3B4 ${progress}%, #ccc ${progress}%)`;
+        })
+
+        //range slider 3 FOR LIGHT
+        const sliderE3 = document.querySelector("#range3")
+        const sliderValue3 = document.querySelector(".value3")
+
+        sliderE3.addEventListener("input", (event) => {
+            const tempSliderValue = event.target.value;
+            sliderValue3.textContent = tempSliderValue ;
+            const progress = (tempSliderValue / sliderE3.max) * 100;
+
+            sliderE3.style.background = `linear-gradient(to right, #68A3B4 ${progress}%, #ccc ${progress}%)`;
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,143 @@
+
+* {
+    text-align: center;
+}
+    
+body {
+  font-family:'Courier New', Courier, monospace;
+}
+
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  background-color: #2B3035;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+}
+
+#main {
+  transition: margin-right .5s;
+  padding: 16px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+.card {
+    box-shadow: 0 8px 4px rgba(0, 0, 0, 0.2); /* Adjust the values as needed */
+    border:none;
+    margin: 15px;
+}
+
+.card-body{
+  background-color: #e6e6e6;
+}
+
+.card-title {
+    font-size: 22px;
+}
+
+.card-text {
+  font-size: 60px;
+}
+
+#location-title {
+    font-size: 30px;
+    display: flex;
+    align-items: center; 
+}
+
+
+
+/* ##################################### for input range slider ################################## */
+
+.range {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+
+.range-input {
+  -webkit-appearance: none;
+  appearance: none; 
+  width: 50%;
+  cursor: pointer;
+  outline: none;
+  border-radius: 15px;
+  height: 10px;
+  background: #ccc;
+}
+
+.range-input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none; 
+  height: 15px;
+  width: 15px;
+  background-color: black;
+  border-radius: 50%;
+  border: none;
+  transition: .2s ease-in-out;
+}
+
+.range-input::-moz-range-thumb {
+  height: 15px;
+  width: 15px;
+  background-color: #8BA9B3;
+  border-radius: 50%;
+  border: none;
+  transition: .2s ease-in-out;
+}
+
+.range-input::-webkit-slider-thumb:hover {
+  box-shadow: 0 0 0 10px rgba(104, 164, 180, 0.2)
+}
+.range-input:active::-webkit-slider-thumb {
+  box-shadow: 0 0 0 13px rgba(104, 164, 180, 0.408)
+}
+.range-input:focus::-webkit-slider-thumb {
+  box-shadow: 0 0 0 13px rgba(104, 164, 180, 0.408)
+}
+
+.range-input::-moz-range-thumb:hover {
+  box-shadow: 0 0 0 10px rgba(104, 164, 180, 0.2)
+}
+.range-input:active::-moz-range-thumb {
+  box-shadow: 0 0 0 13px rgba(104, 164, 180, 0.408)
+}
+.range-input:focus::-moz-range-thumb {
+  box-shadow: 0 0 0 13px rgba(104, 164, 180, 0.408)
+}
+
+.value1, .value2, .value3 {
+  font-size: 26px;    
+  width: 50px;
+  text-align: center;
+}

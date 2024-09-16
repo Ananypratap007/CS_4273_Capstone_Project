@@ -1,0 +1,10 @@
+flask
+Flask-Migrate
+requests
+pyowm
+setuptools
+flask_sqlalchemy
+pyodbc
+fastapi
+pydantic
+azure-identity
