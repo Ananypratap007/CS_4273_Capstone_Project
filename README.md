@@ -2,9 +2,6 @@
 This is our project for CS 4273
 
 
-# Capstone
-
-Capstone Repo for Group N</h1>
 
 <p align="center"><img align="center" src="app/static/images/hi.gif"></p>
 <h2 align="left">Setup & Installation for Flask App</h2>
